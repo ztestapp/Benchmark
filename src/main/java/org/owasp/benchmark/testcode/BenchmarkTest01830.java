@@ -33,11 +33,7 @@ public class BenchmarkTest01830 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		javax.servlet.http.Cookie userCookie = new javax.servlet.http.Cookie("BenchmarkTest01830", "someSecret");
-		userCookie.setMaxAge(60*3); //Store cookie for 3 minutes
-		response.addCookie(userCookie);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("/crypto-02/BenchmarkTest01830.html");
-		rd.include(request, response);
+		doPost(request, response);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BenchmarkTest01830 extends HttpServlet {
 			}
 		}
 
-		String bar = doSomething(request, param);
+		String bar = doSomething(param);
 		
 		try {
 		    java.util.Properties benchmarkprops = new java.util.Properties();
@@ -133,7 +129,7 @@ e.printStackTrace(response.getWriter());
 	}  // end doPost
 	
 		
-	private static String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+	private static String doSomething(String param) throws ServletException, IOException {
 
 		String bar;
 		

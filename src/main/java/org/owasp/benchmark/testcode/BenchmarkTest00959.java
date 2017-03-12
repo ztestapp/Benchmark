@@ -33,11 +33,7 @@ public class BenchmarkTest00959 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		javax.servlet.http.Cookie userCookie = new javax.servlet.http.Cookie("BenchmarkTest00959", "Ms+Bar");
-		userCookie.setMaxAge(60*3); //Store cookie for 3 minutes
-		response.addCookie(userCookie);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("/ldapi-00/BenchmarkTest00959.html");
-		rd.include(request, response);
+		doPost(request, response);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BenchmarkTest00959 extends HttpServlet {
 			}
 		}
 
-		String bar = new Test().doSomething(request, param);
+		String bar = new Test().doSomething(param);
 		
 	org.owasp.benchmark.helpers.LDAPManager ads = new org.owasp.benchmark.helpers.LDAPManager();
 	try {
@@ -102,7 +98,7 @@ public class BenchmarkTest00959 extends HttpServlet {
 	
     private class Test {
 
-        public String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+        public String doSomething(String param) throws ServletException, IOException {
 
 		String bar;
 		

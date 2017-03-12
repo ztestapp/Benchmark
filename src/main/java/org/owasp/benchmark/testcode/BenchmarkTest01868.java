@@ -33,11 +33,7 @@ public class BenchmarkTest01868 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		javax.servlet.http.Cookie userCookie = new javax.servlet.http.Cookie("BenchmarkTest01868", "whatever");
-		userCookie.setMaxAge(60*3); //Store cookie for 3 minutes
-		response.addCookie(userCookie);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("/weakrand-04/BenchmarkTest01868.html");
-		rd.include(request, response);
+		doPost(request, response);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BenchmarkTest01868 extends HttpServlet {
 			}
 		}
 
-		String bar = doSomething(request, param);
+		String bar = doSomething(param);
 		
 	    try {
 		    java.security.SecureRandom secureRandomGenerator = java.security.SecureRandom.getInstance("SHA1PRNG");
@@ -116,7 +112,7 @@ user + " has been remembered with cookie: " + rememberMe.getName()
 	}  // end doPost
 	
 		
-	private static String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+	private static String doSomething(String param) throws ServletException, IOException {
 
 		String bar = "alsosafe";
 		if (param != null) {

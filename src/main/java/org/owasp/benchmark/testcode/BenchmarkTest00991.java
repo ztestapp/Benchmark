@@ -33,11 +33,7 @@ public class BenchmarkTest00991 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		javax.servlet.http.Cookie userCookie = new javax.servlet.http.Cookie("BenchmarkTest00991", "color");
-		userCookie.setMaxAge(60*3); //Store cookie for 3 minutes
-		response.addCookie(userCookie);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("/trustbound-00/BenchmarkTest00991.html");
-		rd.include(request, response);
+		doPost(request, response);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BenchmarkTest00991 extends HttpServlet {
 			}
 		}
 
-		String bar = new Test().doSomething(request, param);
+		String bar = new Test().doSomething(param);
 		
 		// javax.servlet.http.HttpSession.putValue(java.lang.String^,java.lang.Object)
 		request.getSession().putValue( bar, "10340");
@@ -70,7 +66,7 @@ public class BenchmarkTest00991 extends HttpServlet {
 	
     private class Test {
 
-        public String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+        public String doSomething(String param) throws ServletException, IOException {
 
 		String bar = org.springframework.web.util.HtmlUtils.htmlEscape(param);
 

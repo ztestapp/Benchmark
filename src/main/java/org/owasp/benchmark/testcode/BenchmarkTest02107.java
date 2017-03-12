@@ -43,7 +43,7 @@ public class BenchmarkTest02107 extends HttpServlet {
 		String param = request.getParameter("BenchmarkTest02107");
 		if (param == null) param = "";
 
-		String bar = doSomething(request, param);
+		String bar = doSomething(param);
 		
 		java.io.File fileTarget = new java.io.File(bar);
 		response.getWriter().println(
@@ -59,7 +59,7 @@ public class BenchmarkTest02107 extends HttpServlet {
 	}  // end doPost
 	
 		
-	private static String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+	private static String doSomething(String param) throws ServletException, IOException {
 
 		String bar;
 		

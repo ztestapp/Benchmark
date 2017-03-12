@@ -33,11 +33,7 @@ public class BenchmarkTest00962 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		javax.servlet.http.Cookie userCookie = new javax.servlet.http.Cookie("BenchmarkTest00962", "someSecret");
-		userCookie.setMaxAge(60*3); //Store cookie for 3 minutes
-		response.addCookie(userCookie);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("/hash-01/BenchmarkTest00962.html");
-		rd.include(request, response);
+		doPost(request, response);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BenchmarkTest00962 extends HttpServlet {
 			}
 		}
 
-		String bar = new Test().doSomething(request, param);
+		String bar = new Test().doSomething(param);
 		
 		try {
 			java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-512", "SUN");
@@ -102,7 +98,7 @@ public class BenchmarkTest00962 extends HttpServlet {
 	
     private class Test {
 
-        public String doSomething(HttpServletRequest request, String param) throws ServletException, IOException {
+        public String doSomething(String param) throws ServletException, IOException {
 
 		org.owasp.benchmark.helpers.ThingInterface thing = org.owasp.benchmark.helpers.ThingFactory.createThing();
 		String bar = thing.doSomething(param);
